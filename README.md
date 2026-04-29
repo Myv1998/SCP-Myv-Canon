@@ -1,6 +1,8 @@
 # SCP-Myv-Canon
 A comprehensive organizational framework for the SCP universe. It includes governance hierarchy, departmental structure, security clearance levels, and intelligence agencies documentation. All materials presented as in-universe classified documents formatted in LaTeX.
 
+[Access Archive](https://myv1998.github.io/SCP-Myv-Canon/)
+
 ## Documents
 
 - **ADM-4072-ORGSTRUC** — SCP Foundation Organizational Structure and Governance Overview
