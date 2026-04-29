@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCP Myv Canon — Organizational Documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #111a15;
+  color: #c8c9be;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 24px 40px;
+  background-image:
+    radial-gradient(ellipse at 20% 40%, rgba(30,45,30,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 60%, rgba(20,35,45,0.25) 0%, transparent 60%);
+}
+
+.page {
+  max-width: 720px;
+  width: 100%;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+header h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 24px;
+  color: #d4d5c8;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #5a6a54;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #2a3a2a;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-family: 'Russo One', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #5a6a54;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #2a3a2a;
+}
+
+.doc-list {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.doc-list li {
+  margin-bottom: 2px;
+}
+
+.doc-list a {
+  display: block;
+  padding: 14px 18px;
+  color: #c0c1b4;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.doc-list a:hover {
+  border-left-color: #8a7a42;
+  background: rgba(138, 122, 66, 0.06);
+}
+
+.doc-list .doc-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #d4d5c8;
+  letter-spacing: 0.3px;
+}
+
+.doc-list .doc-desig {
+  font-family: 'Russo One', sans-serif;
+  font-size: 9px;
+  color: #4a5a44;
+  letter-spacing: 1.5px;
+  margin-top: 3px;
+}
+
+.doc-list .doc-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #556050;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+footer {
+  margin-top: auto;
+  padding-top: 30px;
+  text-align: center;
+}
+
+footer .license {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #3a4a3a;
+  letter-spacing: 1px;
+}
+
+footer .license a {
+  color: #4a5a44;
+  text-decoration: none;
+}
+
+footer .license a:hover {
+  color: #8a7a42;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>SCP Myv Canon</h1>
+    <p>Organizational Documentation</p>
+  </header>
+
+  <div class="divider"></div>
+
+  <div class="section-title">SCP Foundation</div>
+  <ul class="doc-list">
+    <li><a href="docs/ADM-4072-ORGSTRUC.pdf">
+      <div class="doc-name">Organizational Structure and Governance Overview</div>
+      <div class="doc-desig">ADM-4072-ORGSTRUC</div>
+    </a></li>
+    <li><a href="docs/ADM-0223-CLRLVL.pdf">
+      <div class="doc-name">Security Clearance Levels</div>
+      <div class="doc-desig">ADM-0223-CLRLVL</div>
+    </a></li>
+    <li><a href="docs/FIA-0091-ORGSTRUC.pdf">
+      <div class="doc-name">Foundation Intelligence Agency — Structure, Ranks, and Hierarchy</div>
+      <div class="doc-desig">FIA-0091-ORGSTRUC</div>
+    </a></li>
+  </ul>
+
+  <div class="section-title">United Nations Global Occult Coalition</div>
+  <ul class="doc-list">
+    <li><a href="docs/UNGOC-HICOM-ADM-3091.pdf">
+      <div class="doc-name">Organizational Structure and Chains of Authority</div>
+      <div class="doc-desig">UNGOC-HICOM-ADM-3091</div>
+    </a></li>
+  </ul>
+
+  <div class="section-title">Reference</div>
+  <ul class="doc-list">
+    <li><a href="scp_foundation_org_tree.html">
+      <div class="doc-name">SCP Foundation — Organizational Chart</div>
+      <div class="doc-tag">Interactive</div>
+    </a></li>
+  </ul>
+
+</div>
+
+<footer>
+  <div class="license"><a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></div>
+</footer>
+
+</body>
+</html>
