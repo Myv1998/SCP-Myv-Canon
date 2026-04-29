@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCP Foundation - Organizational Structure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111a15;
+    color: #c8c9be;
+    font-family: 'Barlow', sans-serif;
+    padding: 50px 30px;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(30,45,30,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(20,35,45,0.3) 0%, transparent 60%);
+  }
+
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .doc-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #2a3a2a;
+    position: relative;
+  }
+
+  .doc-header::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #2a3a2a;
+  }
+
+  .doc-header h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 30px;
+    color: #d4d5c8;
+    letter-spacing: 8px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .doc-header .subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7a64;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  .doc-header .classification {
+    margin-top: 14px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 10px;
+    color: #8a7a42;
+    letter-spacing: 3px;
+    padding: 5px 18px;
+    border: 1px solid #8a7a42;
+    display: inline-block;
+  }
+
+  .node-box {
+    display: inline-block;
+    padding: 14px 30px;
+    text-align: center;
+  }
+
+  .node-box .node-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 12px;
+    color: #d4d5c8;
+    letter-spacing: 2px;
+  }
+
+  .node-box .node-subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #6b7a64;
+    margin-top: 3px;
+    letter-spacing: 1px;
+  }
+
+  .node-box.top-authority {
+    border: 2px solid #8a7a42;
+    background: linear-gradient(180deg, #1e2418 0%, #161c12 100%);
+  }
+
+  .node-box.governance {
+    border: 1px solid #4a5a44;
+    background: linear-gradient(180deg, #1a2218 0%, #141a12 100%);
+  }
+
+  .node-box.intermediate {
+    border: 1px solid #3a4a50;
+    background: linear-gradient(180deg, #151e22 0%, #111a1e 100%);
+  }
+
+  .sub-node-box {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid #2a3a2a;
+    background: #141a14;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #7a8a74;
+    letter-spacing: 1px;
+  }
+
+  .tree-row {
+    display: flex;
+    justify-content: center;
+  }
+
+  .vline {
+    width: 0;
+    margin: 0 auto;
+    border-left: 2px solid #2a3a2a;
+  }
+
+  .branch-svg line {
+    stroke: #2a3a2a;
+    stroke-width: 2;
+  }
+
+  .branch-svg { display: block; margin: 0 auto; }
+
+  .governance-row {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+  }
+
+  .governance-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sub-nodes { display: flex; gap: 10px; }
+
+  .reporting-note {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    color: #556050;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+
+  .intermediate-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .section-label {
+    font-family: 'Russo One', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+  }
+
+  .section-label.admin { color: #8a7a42; }
+  .section-label.admin::after { background: #3a3420; }
+  .section-label.info { color: #4a7a8a; }
+  .section-label.info::after { background: #1e3540; }
+  .section-label.research { color: #7a6a8a; }
+  .section-label.research::after { background: #2e2538; }
+  .section-label.security { color: #8a5a4a; }
+  .section-label.security::after { background: #3a2520; }
+
+  .section-box {
+    border: 1px solid #2a3a2a;
+    background: rgba(18, 24, 18, 0.7);
+    padding: 16px;
+  }
+
+  .dept-item {
+    padding: 6px 10px;
+    border-left: 2px solid #2a3a2a;
+    margin-bottom: 4px;
+    margin-left: 2px;
+  }
+
+  .dept-item .dept-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #c0c1b4;
+    letter-spacing: 0.5px;
+  }
+
+  .dept-item .dept-abbr {
+    font-family: 'Russo One', sans-serif;
+    color: #5a6a54;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .dept-item .divisions {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: #556050;
+    margin-top: 2px;
+    padding-left: 8px;
+    border-left: 1px solid #222e22;
+    line-height: 1.5;
+  }
+
+  .dept-item.admin-dept { border-left-color: #8a7a42; }
+  .dept-item.info-dept { border-left-color: #4a7a8a; }
+  .dept-item.research-dept { border-left-color: #7a6a8a; }
+  .dept-item.security-dept { border-left-color: #8a5a4a; }
+
+  .row-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .rc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .row-rc { margin-bottom: 30px; }
+
+  .sec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #222e22;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: #556050;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .legend-swatch { width: 18px; height: 3px; }
+  .legend-swatch.admin { background: #8a7a42; }
+  .legend-swatch.info { background: #4a7a8a; }
+  .legend-swatch.research { background: #7a6a8a; }
+  .legend-swatch.security { background: #8a5a4a; }
+
+  .doc-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #2a3a2a;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+    font-size: 9px;
+    color: #3a4a3a;
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+  .doc-footer::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #2a3a2a;
+  }
+
+  .sections-divider {
+    margin: 40px 0 30px;
+    text-align: center;
+    position: relative;
+  }
+
+  .sections-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #2a3a2a;
+  }
+
+  .sections-divider span {
+    position: relative;
+    background: #111a15;
+    padding: 0 20px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 10px;
+    color: #4a5a44;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="doc-header">
+    <h1>SCP Foundation</h1>
+    <div class="subtitle">Organizational Structure</div>
+    <div class="classification">ADM-4072-ORGSTRUC · LEVEL 2 — RESTRICTED</div>
+  </div>
+
+  <div class="tree-row">
+    <div class="node-box top-authority">
+      <div class="node-title">OFFICE OF THE ADMINISTRATOR</div>
+    </div>
+  </div>
+
+  <svg class="branch-svg" width="480" height="40">
+    <line x1="240" y1="0" x2="240" y2="20"/>
+    <line x1="100" y1="20" x2="380" y2="20"/>
+    <line x1="100" y1="20" x2="100" y2="40"/>
+    <line x1="380" y1="20" x2="380" y2="40"/>
+  </svg>
+
+  <div class="governance-row">
+    <div class="governance-col">
+      <div class="node-box governance">
+        <div class="node-title">O5 COUNCIL</div>
+        <div class="node-subtitle">Overseer Council</div>
+      </div>
+      <svg class="branch-svg" width="260" height="26">
+        <line x1="130" y1="0" x2="130" y2="13"/>
+        <line x1="45" y1="13" x2="215" y2="13"/>
+        <line x1="45" y1="13" x2="45" y2="26"/>
+        <line x1="215" y1="13" x2="215" y2="26"/>
+      </svg>
+      <div class="sub-nodes">
+        <div class="sub-node-box">O5 Command</div>
+        <div class="sub-node-box">Oversight Committees</div>
+      </div>
+    </div>
+    <div class="governance-col">
+      <div class="node-box governance">
+        <div class="node-title">ETHICS COMMITTEE</div>
+        <div class="node-subtitle">Independent Oversight</div>
+      </div>
+      <div class="vline" style="height:14px;"></div>
+      <div class="sub-node-box">DoIA ↗</div>
+      <div class="reporting-note">Reports to Ethics Committee<br>on misconduct &amp; ethical matters</div>
+    </div>
+  </div>
+
+  <div class="vline" style="height:30px;"></div>
+
+  <div class="intermediate-row">
+    <div class="node-box intermediate">
+      <div class="node-title">SDECotW</div>
+      <div class="node-subtitle">Site Directors' Executive Committee</div>
+    </div>
+    <div class="node-box intermediate">
+      <div class="node-title">REGIONAL COMMANDS</div>
+      <div class="node-subtitle">Geographical Oversight</div>
+    </div>
+  </div>
+
+  <div class="sections-divider">
+    <span>Organizational Sections</span>
+  </div>
+
+  <div class="row-top">
+    <div>
+      <div class="section-label admin">Administration</div>
+      <div class="section-box">
+        <div class="dept-item admin-dept">
+          <div class="dept-name">Foundation Academic Consortium</div>
+          <div class="dept-abbr">FAC</div>
+        </div>
+        <div class="dept-item admin-dept">
+          <div class="dept-name">Finances and Accounting</div>
+          <div class="dept-abbr">DoFA</div>
+        </div>
+        <div class="dept-item admin-dept">
+          <div class="dept-name">Human Resources</div>
+          <div class="dept-abbr">DoHR</div>
+        </div>
+        <div class="dept-item admin-dept">
+          <div class="dept-name">Legal Affairs</div>
+          <div class="dept-abbr">DoLA</div>
+        </div>
+        <div class="dept-item admin-dept">
+          <div class="dept-name">Logistics and Transportation</div>
+          <div class="dept-abbr">DoLT</div>
+        </div>
+        <div class="dept-item admin-dept">
+          <div class="dept-name">Medical Affairs</div>
+          <div class="dept-abbr">DoMA</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label info">Information, Databases &amp; Records</div>
+      <div class="section-box">
+        <div class="dept-item info-dept">
+          <div class="dept-name">Observer Journal</div>
+          <div class="dept-abbr">FOUNDATION PUBLICATION</div>
+        </div>
+        <div class="dept-item info-dept">
+          <div class="dept-name">Information Policy and Public Affairs</div>
+          <div class="dept-abbr">DIPPA</div>
+        </div>
+        <div class="dept-item info-dept">
+          <div class="dept-name">Recordkeeping and Information Security</div>
+          <div class="dept-abbr">RAISA</div>
+        </div>
+        <div class="dept-item info-dept">
+          <div class="dept-name">Informational Technologies</div>
+          <div class="dept-abbr">DoIT</div>
+          <div class="divisions">AIAD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-rc">
+    <div class="section-label research">Research &amp; Containment</div>
+    <div class="section-box">
+      <div class="rc-grid">
+        <div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Sciences</div>
+            <div class="dept-abbr">DoS</div>
+            <div class="divisions">Mathematics · Metaphysics · Applied Metaphysics · Geological &amp; Oceanic · Anomalous Materials</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Cognitive and Psychological Sciences</div>
+            <div class="dept-abbr">DoCPS</div>
+            <div class="divisions">Memetics · Antimemetics · Humanoid Psychodynamics · Esoteric Psychodynamics · Applied Patapsychology</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Temporal Anomalies</div>
+            <div class="dept-abbr">DoTA</div>
+            <div class="divisions">Parachronology · Applied Horology · Chronometrics</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Thaumaturgical Sciences</div>
+            <div class="dept-abbr">DoTS</div>
+            <div class="divisions">Thaumaturgy · Thaumatology · Alchemy · Psionics · Spectral Phenomena</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Ontokinetics</div>
+            <div class="dept-abbr">DoO</div>
+          </div>
+        </div>
+        <div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Parabiological Sciences</div>
+            <div class="dept-abbr">DoPS</div>
+            <div class="divisions">Parabiology · Cryptozoology · Entomology · Epidemiology · Xenobiology</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Theology</div>
+            <div class="dept-abbr">DoT</div>
+            <div class="divisions">Abrahamic · Demonology · Egregorian Studies · Purgatorial Studies</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Oneirological and Somniumistic Sciences</div>
+            <div class="dept-abbr">DoOSS</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Linguistics and Anomalous Cryptology</div>
+            <div class="dept-abbr">DoLAC</div>
+            <div class="divisions">Semiotics · Kinetography · Exolinguistics · Cryptological Analysis</div>
+          </div>
+        </div>
+        <div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Historical and Cultural Studies</div>
+            <div class="dept-abbr">DoHCS</div>
+            <div class="divisions">Archaeology · Mythology · Folkloristics · Ethnography · Anthropology</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Extraterrestrial Affairs</div>
+            <div class="dept-abbr">DoEXA</div>
+            <div class="divisions">Astronomy · Astrophysics · Solar System Oversight</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Dimensional Affairs</div>
+            <div class="dept-abbr">DoDA</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Anomalous Arts</div>
+            <div class="dept-abbr">DoART</div>
+            <div class="divisions">Visual Arts · Musicology · Literary Arts · Digital &amp; Interactive Media · Performative Arts · Film &amp; Cinematic</div>
+          </div>
+          <div class="dept-item research-dept">
+            <div class="dept-name">Engineering and Technical Service</div>
+            <div class="dept-abbr">DoETS</div>
+            <div class="divisions">Engineering · Robotics &amp; Cybernetics · STAG · Anomalous Weapons Dev. · Acroamatic Abatement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label security">Security &amp; Operations</div>
+    <div class="section-box">
+      <div class="sec-grid">
+        <div>
+          <div class="dept-item security-dept">
+            <div class="dept-name">Crisis Assessment</div>
+            <div class="dept-abbr">DCA</div>
+          </div>
+          <div class="dept-item security-dept">
+            <div class="dept-name">External Affairs</div>
+            <div class="dept-abbr">DoEA</div>
+            <div class="divisions">Foundation Intelligence Agency (FIA)</div>
+          </div>
+        </div>
+        <div>
+          <div class="dept-item security-dept">
+            <div class="dept-name">Internal Affairs</div>
+            <div class="dept-abbr">DoIA</div>
+            <div class="divisions">↗ Reports to Ethics Committee on misconduct matters</div>
+          </div>
+          <div class="dept-item security-dept">
+            <div class="dept-name">Security Department</div>
+            <div class="dept-abbr">SD</div>
+          </div>
+        </div>
+        <div>
+          <div class="dept-item security-dept">
+            <div class="dept-name">Armed Forces</div>
+            <div class="dept-abbr">DoAF</div>
+            <div class="divisions">Task Forces</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch admin"></div> Administration</div>
+    <div class="legend-item"><div class="legend-swatch info"></div> Information</div>
+    <div class="legend-item"><div class="legend-swatch research"></div> Research &amp; Containment</div>
+    <div class="legend-item"><div class="legend-swatch security"></div> Security &amp; Operations</div>
+  </div>
+
+  <div class="doc-footer">
+    UNAUTHORIZED REPRODUCTION OR DISTRIBUTION IS A VIOLATION OF RAISA REGULATION 7.4
+  </div>
+
+</div>
+</body>
+</html>
