@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SCP Foundation - Organizational Structure</title>
+<title>SCP Foundation — Organizational Structure</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap');
 
@@ -25,6 +25,7 @@
     margin: 0 auto;
   }
 
+  /* ========== HEADER ========== */
   .doc-header {
     text-align: center;
     margin-bottom: 50px;
@@ -72,6 +73,7 @@
     display: inline-block;
   }
 
+  /* ========== SHARED NODE STYLES ========== */
   .node-box {
     display: inline-block;
     padding: 14px 30px;
@@ -121,6 +123,7 @@
     letter-spacing: 1px;
   }
 
+  /* ========== TREE ROWS ========== */
   .tree-row {
     display: flex;
     justify-content: center;
@@ -171,6 +174,7 @@
     gap: 30px;
   }
 
+  /* ========== SECTION STYLES ========== */
   .section-label {
     font-family: 'Russo One', sans-serif;
     font-size: 11px;
@@ -243,6 +247,7 @@
   .dept-item.research-dept { border-left-color: #7a6a8a; }
   .dept-item.security-dept { border-left-color: #8a5a4a; }
 
+  /* ========== LAYOUT ========== */
   .row-top {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -350,6 +355,7 @@
     <div class="classification">ADM-4072-ORGSTRUC · LEVEL 2 — RESTRICTED</div>
   </div>
 
+  <!-- Level 1: Administrator -->
   <div class="tree-row">
     <div class="node-box top-authority">
       <div class="node-title">OFFICE OF THE ADMINISTRATOR</div>
@@ -363,6 +369,7 @@
     <line x1="380" y1="20" x2="380" y2="40"/>
   </svg>
 
+  <!-- Level 2: Governance -->
   <div class="governance-row">
     <div class="governance-col">
       <div class="node-box governance">
@@ -393,6 +400,7 @@
 
   <div class="vline" style="height:30px;"></div>
 
+  <!-- Level 3: Intermediate -->
   <div class="intermediate-row">
     <div class="node-box intermediate">
       <div class="node-title">SDECotW</div>
@@ -408,6 +416,7 @@
     <span>Organizational Sections</span>
   </div>
 
+  <!-- ROW 1: Admin + Info -->
   <div class="row-top">
     <div>
       <div class="section-label admin">Administration</div>
@@ -462,6 +471,7 @@
     </div>
   </div>
 
+  <!-- ROW 2: R&C full width, 3 columns inside -->
   <div class="row-rc">
     <div class="section-label research">Research &amp; Containment</div>
     <div class="section-box">
@@ -501,11 +511,12 @@
           <div class="dept-item research-dept">
             <div class="dept-name">Theology</div>
             <div class="dept-abbr">DoT</div>
-            <div class="divisions">Abrahamic · Demonology · Egregorian Studies · Purgatorial Studies</div>
+            <div class="divisions">Abrahamic · Dharmic Studies · Animistic and Folk Traditions · Demonology · Thanatological Studies · Egregorian Studies · Comparative Theology</div>
           </div>
           <div class="dept-item research-dept">
-            <div class="dept-name">Oneirological and Somniumistic Sciences</div>
-            <div class="dept-abbr">DoOSS</div>
+            <div class="dept-name">Oneirological, Noospheric, and Somniumistic Sciences</div>
+            <div class="dept-abbr">DoONSS</div>
+			<div class="divisions">Oneirological · Somniumistic · Noospheric</div>
           </div>
           <div class="dept-item research-dept">
             <div class="dept-name">Linguistics and Anomalous Cryptology</div>
@@ -531,7 +542,7 @@
           <div class="dept-item research-dept">
             <div class="dept-name">Anomalous Arts</div>
             <div class="dept-abbr">DoART</div>
-            <div class="divisions">Visual Arts · Musicology · Literary Arts · Digital &amp; Interactive Media · Performative Arts · Film &amp; Cinematic</div>
+            <div class="divisions">Surrealistics · Visual Arts · Musicology · Literary Arts · Digital &amp; Interactive Media · Performative Arts · Film &amp; Cinematic</div>
           </div>
           <div class="dept-item research-dept">
             <div class="dept-name">Engineering and Technical Service</div>
@@ -543,6 +554,7 @@
     </div>
   </div>
 
+  <!-- ROW 3: Security & Operations -->
   <div>
     <div class="section-label security">Security &amp; Operations</div>
     <div class="section-box">
